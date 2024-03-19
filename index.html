@@ -31,7 +31,70 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  
+<!-- below section is for running script -->
+    
+<script src="js/jquery-3.4.1.min.js"></script>
 
+<script type="text/javascript"> 
+
+function submitToAPI(e) {
+   e.preventDefault();
+   var URL = "https://ez91efztr8.execute-api.us-east-1.amazonaws.com/test/contact-us";
+
+        var Namere = /[A-Za-z]{1}[A-Za-z]/;
+        if (!Namere.test($("#name-input").val())) {
+                     alert ("Name can not less than 2 char");
+            return;
+        }
+        var mobilere = /[0-9]{10}/;
+        if (!mobilere.test($("#phone-input").val())) {
+            alert ("Please enter valid mobile number");
+            return;
+        }
+        if ($("#email-input").val()=="") {
+            alert ("Please enter your email id");
+            return;
+        }
+
+        var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+        if (!reeamil.test($("#email-input").val())) {
+            alert ("Please enter valid email address");
+            return;
+        }
+
+   var name = $("#name-input").val();
+   var phone = $("#phone-input").val();
+   var email = $("#email-input").val();
+   var desc = $("#description-input").val();
+   var data = {
+      name : name,
+      phone : phone,
+      email : email,
+      desc : desc
+    };
+
+   $.ajax({
+    type: "POST",
+    url : "https://cs75k71yff.execute-api.us-east-1.amazonaws.com/beta/contact-us",
+     contentType: "text/html",
+     data: JSON.stringify(data),
+
+     
+     success: function () {
+       // clear form and show a success message
+       alert("Thanks for writing out to us! Will get back to you shortly");
+       document.getElementById("contact-form").reset();
+   location.reload();
+     },
+     error: function () {
+       // show an error message
+       alert("Your message could not be sent; pls reach out to Gen AI Consultancy if issue persists");
+     }});
+ }
+
+</script>
+<meta name="referrer" content="no-referrer-when-downgrade"
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -678,6 +741,50 @@
   </section> -->
 
   <!-- end client section -->
+
+  <!-- Contact us section -->
+  
+  <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+            <span>Contact us</span>
+          </h2>
+          <p>
+            <b>Let us know how we can help! We do our best to respond within 1 business day.</b>
+          </p>
+        </div>
+        <div class="row">
+          <form id="contact-form" method="post">
+              <h4>Name:</h4>
+              <input type="text" style="height:35px;" id="name-input" class="input" style="width:100%;" /><br/>
+              <br>
+              <h4>Phone number:</h4>
+              <input type="phone" style="height:35px;" id="phone-input"  class="input" style="width:100%;"/><br/>
+              <br>
+              <h4>Email:</h4>
+              <input type="email" style="height:35px;" id="email-input"  class="input" style="width:100%;"/><br/>
+              <br>
+              <h4>How can we help you?</h4>
+              <textarea id="description-input" rows="3"  class="input" style="width:400%;"></textarea><br/>
+              <br>
+              <!-- <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control" style="width:100%;"></div> -->
+              <div type="button"
+                   onClick="submitToAPI(event)"
+                  class="btn-box">
+                  <a >
+                    Submit
+                  </a>
+                </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end Contact us section -->
 
 
   <!-- info section -->
