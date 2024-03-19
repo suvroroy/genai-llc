@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+
+  <title> Gen AI Consultancy </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <!-- below section is for running script -->
+    
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript"> 
+
+function submitToAPI(e) {
+       e.preventDefault();
+       var URL = "https://ez91efztr8.execute-api.us-east-1.amazonaws.com/test/contact-us";
+
+            var Namere = /[A-Za-z]{1}[A-Za-z]/;
+            if (!Namere.test($("#name-input").val())) {
+                         alert ("Name can not less than 2 char");
+                return;
+            }
+            var mobilere = /[0-9]{10}/;
+            if (!mobilere.test($("#phone-input").val())) {
+                alert ("Please enter valid mobile number");
+                return;
+            }
+            if ($("#email-input").val()=="") {
+                alert ("Please enter your email id");
+                return;
+            }
+
+            var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+            if (!reeamil.test($("#email-input").val())) {
+                alert ("Please enter valid email address");
+                return;
+            }
+
+       var name = $("#name-input").val();
+       var phone = $("#phone-input").val();
+       var email = $("#email-input").val();
+       var desc = $("#description-input").val();
+       var data = {
+          name : name,
+          phone : phone,
+          email : email,
+          desc : desc
+        };
+
+       $.ajax({
+        type: "POST",
+        url : "https://cs75k71yff.execute-api.us-east-1.amazonaws.com/beta/contact-us",
+         contentType: "text/html",
+         data: JSON.stringify(data),
+
+         
+         success: function () {
+           // clear form and show a success message
+           alert("Thanks for writing out to us! Will get back to you shortly");
+           document.getElementById("contact-form").reset();
+       location.reload();
+         },
+         error: function () {
+           // show an error message
+           alert("Your message could not be sent; pls reach out to Gen AI Consultancy if issue persists");
+         }});
+     }
+
+    </script>
+    <meta name="referrer" content="no-referrer-when-downgrade"
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K12MGEJP4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K12MGEJP4X');
+</script>
+
+<body class="sub_page">
+
+    <div class="hero_area">
+  
+      <div class="hero_bg_box">
+        <div class="bg_img_box">
+          <img src="images/hero-bg.png" alt="">
+        </div>
+      </div>
+  
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                Gen AI Consultancy
+              </span>
+            </a>
+  
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav  ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="index.html">Home </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html"> About</a>
+                </li>
+                <li class="nav-item>
+                  <a class="nav-link" href="service.html">
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="why.html">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="team.html">Leadership Corner</a>
+                </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="contact.html">Contact Us <span class="sr-only">(current)</span> </a>
+              </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                </li>
+                <form class="form-inline">
+                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </form> -->
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+    </div>
+  
+  
+    <!-- Contact us section -->
+  
+    <section class="service_section layout_padding">
+      <div class="service_container">
+        <div class="container ">
+          <div class="heading_container heading_center">
+            <h2>
+              <span>Contact us</span>
+            </h2>
+            <p>
+              <b>Let us know how we can help! We do our best to respond within 1 business day.</b>
+            </p>
+          </div>
+          <div class="row">
+            <form id="contact-form" method="post">
+                <h4>Name:</h4>
+                <input type="text" style="height:35px;" id="name-input" class="input" style="width:100%;" /><br/>
+                <br>
+                <h4>Phone number:</h4>
+                <input type="phone" style="height:35px;" id="phone-input"  class="input" style="width:100%;"/><br/>
+                <br>
+                <h4>Email:</h4>
+                <input type="email" style="height:35px;" id="email-input"  class="input" style="width:100%;"/><br/>
+                <br>
+                <h4>How can we help you?</h4>
+                <textarea id="description-input" rows="3"  class="input" style="width:400%;"></textarea><br/>
+                <br>
+                <!-- <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control" style="width:100%;"></div> -->
+                <div type="button"
+                     onClick="submitToAPI(event)"
+                    class="btn-box">
+                    <a >
+                      Submit
+                    </a>
+                  </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  
+    <!-- end service section -->
+  
+    <!-- info section -->
+  
+    <section class="info_section layout_padding2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 info_col">
+            <div class="info_contact">
+              <h4>
+                Connect
+              </h4>
+              <div class="contact_link_box">
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call +1 (414)-334-0891
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                  <span>
+                    Whatsapp +1 (414)-334-0891
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    gnai.consulting@gmail.com
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="info_social">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+  
+          <div class="col-md-6 col-lg-2 mx-auto info_col">
+            <div class="info_link_box">
+              <h4>
+                Links
+              </h4>
+              <div class="info_links">
+                <a class="active" href="index.html">
+                  Home
+                </a>
+                <a class="" href="about.html">
+                  About
+                </a>
+                <a class="" href="service.html">
+                  Services
+                </a>
+                <a class="" href="why.html">
+                  Why Us
+                </a>
+                <a class="" href="team.html">
+                  Leadership Corner
+                </a>
+              <a class="" href="contact.html">
+                Contact Us
+              </a>
+            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 info_col ">
+            <h4>
+              Subscribe
+            </h4>
+            <form action="#">
+              <input type="text" placeholder="Enter email" />
+              <button type="submit">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- end info section -->
+  
+    <!-- footer section -->
+    <section class="footer_section">
+      <div class="container">
+        <p>
+          &copy; Copyright <span id="displayYear"></span> Gen AI Consultancy, LLC All Rights Reserved
+        </p>
+      </div>
+    </section>
+    <!-- footer section -->
+  
+    <!-- jQery -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- owl slider -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <!-- custom js -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+    </script>
+    <!-- End Google Map -->
+  
+  </body>
+  
+  </html>
+
+
